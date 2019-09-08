@@ -1,0 +1,45 @@
+<div class="col-12">
+    <div class="row text-center">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form [formGroup]="previewForm">
+                <div *ngFor="let data of formFields">
+                    <div *ngIf="data">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="data.label">{{data.label}}</label>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="data.visible === false; else elseFieldBlock">
+                                    <div *ngIf="data.type === 'button'; else elseBlock">
+                                        <input [type]="data.type" [id]="data.id" [name]="data.label"
+                                            [value]="data.label" class="hide-element" formControlName="{{data.label}}"
+                                            (click)="btnClick()">
+                                    </div>
+                                    <ng-template #elseBlock>
+                                        <input [type]="data.type" [id]="data.id" [name]="data.label"
+                                            class="hide-element" formControlName="{{data.label}}">
+                                    </ng-template>
+                                </div>
+                                <ng-template #elseFieldBlock>
+                                    <div *ngIf="data.type === 'button'; else elseBlock">
+                                        <input [type]="data.type" [id]="data.id" [name]="data.label"
+                                            [value]="data.label" formControlName="{{data.label}}" (click)="btnClick()">
+                                    </div>
+                                    <ng-template #elseBlock>
+                                        <input [type]="data.type" [id]="data.id" [name]="data.label"
+                                            formControlName="{{data.label}}">
+                                    </ng-template>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary float-left" (click)="cancel()">Back</button>
+                <button type="submit" [disabled]="!previewForm.valid" class="btn btn-secondary float-right"
+                    (click)="onSubmit()">Submit</button>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>

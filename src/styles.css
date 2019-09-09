@@ -1,25 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
 body {
     width: 100% !important;
     height: 100% !important;
-    background-color: #f2f1f0;
+    background-color: #ececea;
     margin: 0;
     padding: 0;
 }
 
 .form-designer {
     width: 70%;
-    background: #d8d6d3;
+    background: #fcfcfc;
     height: 100vh;
-    padding: 1.82vw 2.42vw;
 }
 
 .add-update-field {
     width: 30%;
-    padding: 1.82vw 2.42vw;
+}
+
+.add-update-field button{
+    width: 100%;
 }
 
 .btn-bottom-float {
@@ -30,4 +32,16 @@ body {
 
 .hide-element {
     visibility: hidden;
+}
+
+.add-update-field .ng-valid[required], .ng-valid.required {
+    border-left: 5px solid #42A948;
+}
+
+.add-update-field .ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+}
+
+.form-control:focus {
+    box-shadow: none;
 }

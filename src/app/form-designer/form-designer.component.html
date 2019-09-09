@@ -1,53 +1,72 @@
-<div class="float-left">
-    <strong>
-        Form Designer
-    </strong>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-12 float-left">
+            <h1>Form Designer</h1>
+        </div>
+    </div>
+    <div class="row pt-5">
+        <div class="col-3 float-left">
+            <h5>All Fields</h5>
+        </div>
+        <div class="col-6"></div>
+        <div class="col-3 float-right"> <button type="button" class="btn btn-success float-right"
+                [disabled]="formData.length === 0" (click)="previewForm()">
+                <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">search</mat-icon>
+                Preview Form
+            </button></div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive pt-4">
+                <table class="table table-hover">
+                    <thead class="vd_bg-dark-blue vd_white">
+                        <tr>
+                            <th class="form-designer-table-heading">Order</th>
+                            <th class="form-designer-table-heading">Name/ Label</th>
+                            <th class="form-designer-table-heading">Type</th>
+                            <th class="form-designer-table-heading">Visible</th>
+                            <th class="form-designer-table-heading">Req*</th>
+                            <th class="form-designer-table-heading">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let data of formData">
+                            <ng-container *ngIf="data">
+                                <tr>
+                                    <td class="form-designer-table-data">{{ data.order }}</td>
+                                    <td class="form-designer-table-data">{{ data.label }}</td>
+                                    <td class="form-designer-table-data">{{ data.type }}</td>
+                                    <td class="form-designer-table-data">{{ data.visible }}</td>
+                                    <td class="form-designer-table-data">{{ data.required }}</td>
+                                    <td class="form-designer-table-data">
+                                        <button type="button" class="btn btn-secondary btn-sm mx-2"
+                                            (click)="editForm(data)">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">
+                                                edit
+                                            </mat-icon>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm mx-2"
+                                            (click)="deleteField(data.id)">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">
+                                                delete
+                                            </mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-5">
+        <div class="col-2 float-left">
+            <button type="button" class="btn btn-primary btn-bottom-float float-left" (click)="addField()">
+                <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">add</mat-icon>
+                Add Field
+            </button>
+        </div>
+        <div class="col-10"></div>
+    </div>
 </div>
-<br>
-All Fields
-<button type="button" class="btn btn-secondary float-right" (click)="previewForm()">
-    <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">search</mat-icon>
-    Preview Form
-</button>
-<div class="table-responsive pt-4">
-    <table class="table table-hover">
-        <thead class="vd_bg-dark-blue vd_white">
-            <tr>
-                <th class="form-designer-table-heading">Order</th>
-                <th class="form-designer-table-heading">Name/ Label</th>
-                <th class="form-designer-table-heading">Type</th>
-                <th class="form-designer-table-heading">Visible</th>
-                <th class="form-designer-table-heading">Req*</th>
-                <th class="form-designer-table-heading">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let data of formData">
-                <ng-container *ngIf="data">
-                    <tr>
-                        <td class="form-designer-table-data">{{ data.order }}</td>
-                        <td class="form-designer-table-data">{{ data.label }}</td>
-                        <td class="form-designer-table-data">{{ data.type }}</td>
-                        <td class="form-designer-table-data">{{ data.visible }}</td>
-                        <td class="form-designer-table-data">{{ data.required }}</td>
-                        <td class="form-designer-table-data">
-                            <button type="button" class="btn btn-secondary" (click)="editForm(data)">
-                                <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">edit</mat-icon>
-                                Edit
-                            </button>
-                            <button type="button" class="btn btn-danger" (click)="deleteField(data.id)">
-                                <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">delete
-                                </mat-icon>
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                </ng-container>
-            </ng-container>
-        </tbody>
-    </table>
-</div>
-<button type="button" class="btn btn-secondary btn-bottom-float float-left" (click)="addField()">
-    <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">add</mat-icon>
-    Add Field
-</button>

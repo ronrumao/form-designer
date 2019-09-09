@@ -1,47 +1,76 @@
-<div class="float-left">
-    <strong>
-        Add/Update Fields
-    </strong>
+<div class="container p-4">
+    <div class="row pt-2">
+        <div class="col-12 float-left">
+            <h5>
+                Add/Update Fields
+            </h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form #addFieldForm="ngForm" class="pt-4" (ngSubmit)="saveField()">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="id" class="font-weight-bold">ID</label>
+                        </div>
+                        <div class="col-10">
+                            <label for="id" class="text-primary">{{model.id}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="visible" class="font-weight-bold">Visible</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="checkbox" class="form-control" id="visible" [(ngModel)]="model.visible"
+                                name="visible" #visible="ngModel">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="required" class="font-weight-bold">Required</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="checkbox" class="form-control" id="required" [(ngModel)]="model.required"
+                                name="required" #required="ngModel">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="order" class="font-weight-bold">Order</label>
+                    <input type="number" class="form-control" id="order" required [(ngModel)]="model.order" name="order"
+                        #order="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="label" class="font-weight-bold">Label</label>
+                    <input type="text" class="form-control" id="label" required [(ngModel)]="model.label" name="label"
+                        #label="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="type" class="font-weight-bold">Type</label>
+                    <select class="form-control" id="type" required [(ngModel)]="model.type" name="type"
+                        #type="ngModel">
+                        <option *ngFor="let item of inputTypes" [value]="item" [selected]="'text'">
+                            {{ item }}
+                        </option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-4"><button type="submit" class="btn btn-success float-right"
+                            [disabled]="!form.valid">Save</button></div>
+                    <div class="col-2"></div>
+                    <div class="col-4"><button type="button" class="btn btn-danger float-left"
+                            (click)="reset()">Reset</button>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-<br>
-<div class="text-primary">{{model.id}}</div>
-<form #addFieldForm="ngForm" class="pt-4" (ngSubmit)="saveField()">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-6">
-                <label for="visible">Visible</label>
-            </div>
-            <div class="col-6">
-                <input type="checkbox" class="form-control" id="visible" [(ngModel)]="model.visible" name="visible">
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-6">
-                <label for="required">Required</label>
-            </div>
-            <div class="col-6">
-                <input type="checkbox" class="form-control" id="required" [(ngModel)]="model.required" name="required">
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="order">Order</label>
-        <input type="number" class="form-control" id="order" required [(ngModel)]="model.order" name="order">
-    </div>
-    <div class="form-group">
-        <label for="label">Label</label>
-        <input type="text" class="form-control" id="label" required [(ngModel)]="model.label" name="label">
-    </div>
-    <div class="form-group">
-        <label for="type">Type</label>
-        <select class="form-control" id="type" required [(ngModel)]="model.type" name="type">
-            <option *ngFor="let item of inputTypes" [value]="item" [selected]="'text'">
-                {{ item }}
-            </option>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-secondary float-left" [disabled]="!addFieldForm.valid">Save</button>
-    <button type="button" class="btn btn-secondary float-right" (click)="cancel()">Cancel</button>
-</form>

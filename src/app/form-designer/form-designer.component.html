@@ -36,7 +36,7 @@
                                     <ng-container *ngIf="data">
                                         <tr>
                                             <td class="form-designer-table-data">{{ data.order }}</td>
-                                            <td class="form-designer-table-data">{{ data.label }}</td>
+                                            <td id="lbl-field-name" class="form-designer-table-data">{{ data.label }}</td>
                                             <td class="form-designer-table-data">{{ data.type }}</td>
                                             <td class="form-designer-table-data">{{ data.visible }}</td>
                                             <td class="form-designer-table-data">{{ data.required }}</td>
@@ -66,7 +66,7 @@
             </div>
             <div class="row pt-5">
                 <div class="col-2 float-left">
-                    <button type="button" class="btn btn-primary btn-bottom-float float-left" (click)="addField()">
+                    <button type="button" id="btn-add-field" class="btn btn-primary btn-bottom-float float-left" (click)="addField()">
                         <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">add</mat-icon>
                         Add Field
                     </button>

@@ -8,7 +8,7 @@ import { FormDesignerComponent } from './form-designer/form-designer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUpdateFieldComponent } from './add-update-field/add-update-field.component';
 import { PreviewFormComponent } from './preview-form/preview-form.component';
-import { MaterialModule } from './material/material.module';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MaterialModule,
     ReactiveFormsModule,
+    MatIconModule,
     AppRoutingModule
   ],
   providers: [],

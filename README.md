@@ -11,7 +11,12 @@ Navigate to `http://localhost:4200/` in the browser to load application.
 
 ## assumptions
 
-*
+* Not updating id on edit field
+* updating id and clear form on reset
+* updating id and clear form on save
+* add-field-form is disabled until Add Field button is pressed
+* input field types are list of input types available from W3school
+* submit button in preview form just logs a message assuming there is no other page to route
 
 ## Running unit tests
 

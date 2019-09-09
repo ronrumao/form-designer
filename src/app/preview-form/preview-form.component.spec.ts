@@ -15,9 +15,9 @@ describe('PreviewFormComponent', () => {
         BrowserAnimationsModule,
         ReactiveFormsModule
       ],
-      declarations: [ PreviewFormComponent ]
+      declarations: [PreviewFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

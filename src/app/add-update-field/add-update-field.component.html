@@ -1,7 +1,7 @@
 <div class="container p-4">
     <div class="row pt-2">
         <div class="col-12 float-left">
-            <h5>
+            <h5 id="add-update-header">
                 Add/Update Fields
             </h5>
         </div>
@@ -61,10 +61,10 @@
                 </div>
                 <div class="row">
                     <div class="col-1"></div>
-                    <div class="col-4"><button type="submit" class="btn btn-success float-right"
+                    <div class="col-4"><button id="btn-save" type="submit" class="btn btn-success float-right"
                             [disabled]="!addFieldForm.valid">Save</button></div>
                     <div class="col-2"></div>
-                    <div class="col-4"><button type="button" class="btn btn-danger float-left"
+                    <div class="col-4"><button id="btn-reset" type="button" class="btn btn-danger float-left"
                             (click)="reset()" [disabled]="id === ''">Reset</button>
                     </div>
                     <div class="col-1"></div>

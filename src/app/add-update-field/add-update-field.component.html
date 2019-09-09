@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-6">
                             <input type="checkbox" class="form-control" id="visible" [(ngModel)]="model.visible"
-                                name="visible" #visible="ngModel">
+                                name="visible" [disabled]="id === ''">
                         </div>
                     </div>
                 </div>
@@ -37,36 +37,35 @@
                         </div>
                         <div class="col-6">
                             <input type="checkbox" class="form-control" id="required" [(ngModel)]="model.required"
-                                name="required" #required="ngModel">
+                                name="required" [disabled]="id === ''">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="order" class="font-weight-bold">Order</label>
                     <input type="number" class="form-control" id="order" required [(ngModel)]="model.order" name="order"
-                        #order="ngModel">
+                        [disabled]="id === ''">
                 </div>
                 <div class="form-group">
                     <label for="label" class="font-weight-bold">Label</label>
                     <input type="text" class="form-control" id="label" required [(ngModel)]="model.label" name="label"
-                        #label="ngModel">
+                        [disabled]="id === ''">
                 </div>
                 <div class="form-group">
                     <label for="type" class="font-weight-bold">Type</label>
-                    <select class="form-control" id="type" required [(ngModel)]="model.type" name="type"
-                        #type="ngModel">
+                    <select class="form-control" id="type" required [(ngModel)]="model.type" name="type" [disabled]="id === ''">
                         <option *ngFor="let item of inputTypes" [value]="item" [selected]="'text'">
-                            {{ item }}
+                        {{ item }}
                         </option>
                     </select>
                 </div>
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col-4"><button type="submit" class="btn btn-success float-right"
-                            [disabled]="!form.valid">Save</button></div>
+                            [disabled]="!addFieldForm.valid">Save</button></div>
                     <div class="col-2"></div>
                     <div class="col-4"><button type="button" class="btn btn-danger float-left"
-                            (click)="reset()">Reset</button>
+                            (click)="reset()" [disabled]="id === ''">Reset</button>
                     </div>
                     <div class="col-1"></div>
                 </div>

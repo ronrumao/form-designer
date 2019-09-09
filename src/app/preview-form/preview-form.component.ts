@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-preview-form',
   templateUrl: './preview-form.component.html',
+  styleUrls: ['./preview-form.component.css']
 })
 export class PreviewFormComponent implements OnInit {
   @Output() showForm: EventEmitter<any> = new EventEmitter<any>();
@@ -38,6 +39,6 @@ export class PreviewFormComponent implements OnInit {
   }
 
   cancel() {
-    this.showForm.emit(undefined);
+    this.showForm.emit(true);
   }
 }

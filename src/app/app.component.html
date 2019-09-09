@@ -1,14 +1,3 @@
-<div *ngIf="!showForm">
-  <div class="form-designer float-left" id="form-designer-component">
-    <app-form-designer (updateIdAddForm)="updateIdAddForm($event)" (populateForm)="populateForm($event)"
-      (editField)="editField($event)" [field]="model" [formData]="formData"></app-form-designer>
-  </div>
-  <div class="add-update-field float-right" id="add-update-field-component">
-    <app-add-update-field (saveFieldValue)=saveFieldValue($event) [id]="id" [editFieldData]="editModel">
-    </app-add-update-field>
-  </div>
-</div>
-<div *ngIf="showForm">
-  <app-preview-form (showForm)="showFormDesigner($event)" [formFields]="formData"></app-preview-form>
-</div>
+<app-form-designer></app-form-designer>
+
 <router-outlet></router-outlet>

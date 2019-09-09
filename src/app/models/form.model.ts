@@ -1,7 +1,7 @@
 export class FormModel {
     id: string;
-    visible: boolean;
-    required: boolean;
+    visible = false;
+    required = false;
     label: string;
     order: number;
     type: string;

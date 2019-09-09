@@ -1,46 +1,33 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormModel } from '../models/form.model';
 import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-form-designer',
   templateUrl: './form-designer.component.html',
+  styleUrls: ['./form-designer.component.css']
 })
-export class FormDesignerComponent implements OnInit, OnChanges {
-  @Output() updateIdAddForm: EventEmitter<any> = new EventEmitter<any>();
-  @Output() populateForm: EventEmitter<any> = new EventEmitter<any>();
-  @Output() editField: EventEmitter<any> = new EventEmitter<any>();
-  @Input() field: FormModel;
+export class FormDesignerComponent implements OnInit {
   @Input() formData = [];
+  id = '';
+  selectedFieldDetails: FormModel;
+  showFieldForm = true;
 
   constructor() { }
 
   ngOnInit() {
-    this.addField();
-  }
-
-  ngOnChanges() {
-    if (Object.keys(this.field).length !== 0) {
-      const editFieldIndex = this.formData.findIndex(x => x.id === this.field.id);
-      if (editFieldIndex === -1) {
-        this.formData.push(this.field);
-      } else {
-        this.formData.splice(editFieldIndex, 1, this.field);
-      }
-      this.formData.sort((a, b) => a.order - b.order);
-    }
   }
 
   previewForm() {
     if (this.formData.length !== 0) {
-      this.populateForm.emit(this.formData);
+      this.showFieldForm = false;
     } else {
       console.log('there are no fields added');
     }
   }
 
   editForm(data: FormModel) {
-    this.editField.emit(data);
+    this.selectedFieldDetails = data;
   }
 
   deleteField(id: string) {
@@ -51,6 +38,22 @@ export class FormDesignerComponent implements OnInit, OnChanges {
   }
 
   addField() {
-    this.updateIdAddForm.emit(uuid());
+    this.id = uuid();
+  }
+
+  saveFieldData = (event: any) => {
+    if (Object.keys(event).length !== 0) {
+      const editFieldIndex = this.formData.findIndex(x => x.id === event.id);
+      if (editFieldIndex === -1) {
+        this.formData.push(event);
+      } else {
+        this.formData.splice(editFieldIndex, 1, event);
+      }
+      this.formData.sort((a, b) => a.order - b.order);
+    }
+  }
+
+  showFormDesigner = (event: any) => {
+    this.showFieldForm = event;
   }
 }

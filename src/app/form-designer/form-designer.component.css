@@ -1,0 +1,19 @@
+.formContainer {
+    height: 100vh;
+    float: left;
+}
+
+.formContainer-left {
+    width: 70%;
+}
+
+.formContainer-right {
+    width: 30%;
+    background-color: #ececea !important;
+}
+
+.btn-bottom-float {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5%;
+}
